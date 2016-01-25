@@ -1,9 +1,14 @@
 <?php
-include("inc/data.php");
+// include("inc/data.php");
+include("inc/db.php");
 include("inc/functions.php");
 
 $pageTitle = "";
 include("inc/header.php");
+
+$where = where($_GET['title'],$_GET['actor']);
+$sort = sortQuery($_GET['sort']);
+
 ?>
 
   <body>
@@ -16,10 +21,10 @@ include("inc/header.php");
 
 		<div class="form-group search-box">
 			<div class="col-sm-3">
-				<select class="form-control">
+				<select class="form-control" id="select">
 					<option disabled>-- Select search criteria --</option>
-					<option>By title</option>
-					<option>By actor</option>
+					<option value="title">By title</option>
+					<option value="actor">By actor</option>
 				</select>
 			</div>
 			<label for="search" class="col-sm-3 control-label text-right">Search criteria</label>
@@ -36,7 +41,14 @@ include("inc/header.php");
 		  <thead>
 			  <tr>
 			  	<th>№ </th>
-			  	<th><a href="#">Title</a></th>
+			  	<th><a href="index.php?sort=<?php if(!isset($_GET["sort"])||$_GET["sort"]=="ASC"){
+			  											echo "DESC";
+			  											$sortDirection = "up";
+			  										}else if($_GET["sort"]=="DESC"){
+			  											echo "ASC";
+			  											$sortDirection = "down";
+			  										}?>">Title&nbsp;<span class="arrow <?php echo $sortDirection; ?>"></span>
+			  										</a></th>
 			  	<th>Release year</th>
 			  	<th>Format</th>
 			  	<th>Cast</th>
@@ -45,9 +57,7 @@ include("inc/header.php");
 		  </thead>
 		  <tbody>
 			  <?php
-			  	foreach($movies as $key => $value){
-					echo get_item($key,$value);
-				}
+			  	echo get_table_rows($db,$where,$sort);
 			  ?>
 			  <tr class="row-add-item">
 			  	<td></td>
@@ -64,7 +74,8 @@ include("inc/header.php");
     </div><!-- /.container -->
     
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

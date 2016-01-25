@@ -9,6 +9,17 @@ th{
 	text-align: center;
 	background-color: #ccc;
 }
+.arrow{
+	background-image: url("../img/arrows_sm.jpg");
+	overflow: hidden;
+	width: 16px;
+  	height: 16px;
+  	float: right;
+  	background-size:16px 32px;
+}
+.down{
+	background-position: 0 16px;
+}
 td img{
 	width: 32px;
 	height: 32px;
