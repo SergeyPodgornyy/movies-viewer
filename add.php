@@ -9,29 +9,29 @@ include("inc/header.php");
 		<h1 class="text-center">Add new item to Movies Viewer</h1>
 	    <p class="lead text-center">Insert below infomation about year favorute movie.</p>
 
-		<form action="insert.php" class="form-horizontal">
+		<form action="insert.php" class="form-horizontal" method="POST">
 			<div class="form-group">
 			    <label for="title" class="col-sm-2 control-label">Movie title</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="title" placeholder="Insert movie title" required>
+			      <input type="text" class="form-control" id="title" name="title" placeholder="Insert movie title" required>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="year" class="col-sm-2 control-label">Release year</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="year" placeholder="Insert release year" required>
+			      <input type="text" class="form-control" id="year" name="year" placeholder="Insert release year" required>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="format" class="col-sm-2 control-label">Movie format</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="format" placeholder="Insert movie format" required>
+			      <input type="text" class="form-control" id="format" name="format" placeholder="Insert movie format" required>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="cast" class="col-sm-2 control-label">Cast</label>
 			    <div class="col-sm-10">
-			      <textarea name="case" class="form-control" id="case" rows="4"  placeholder="Insert main actors starred in the film" required></textarea>
+			      <textarea class="form-control" id="cast" name="cast" rows="4"  placeholder="Insert main actors starred in the film" required></textarea>
 			      <p class="hint">* Comma separated please</p>
 			    </div>
 			</div>

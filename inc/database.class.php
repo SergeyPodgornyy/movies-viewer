@@ -34,19 +34,22 @@ class database{
 		}
 	}
 
-	function get_item($sql){
-		foreach ($this->conn->query($sql) as $item) {
-			$this->id = $item['id'];
-			$this->title = $item['title'];
-			$this->year = $item['year'];
-			$this->format = $item['format'];
-			$this->actors = $item['actors'];
-		}
-	}
-
+	// Select all rows from database
 	public function select($sql){
 		$query = $this->conn->query($sql);
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
+	}
+
+	// Delete item
+	public function delete($sql){
+		$this->conn->query($sql);
+	}
+
+	// Insert new movies to database
+	public function insert($sql,$params){
+		$stmt = $this->conn->prepare($sql);
+
+		$stmt->execute($params);
 	}
 }

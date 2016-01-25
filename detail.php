@@ -54,7 +54,7 @@ include("inc/header.php");
         		</tr>
         		<tr class="row-detete-item">
         			<td></td>
-        			<td><a href="delete.php?id=<?php echo item['id']; ?>">Delete this movie from list</a></td>
+        			<td><a href="delete.php?id=<?php echo $item['id']; ?>">Delete this movie from list</a></td>
         		</tr>
         	</table>
         </div>
