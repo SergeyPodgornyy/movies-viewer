@@ -84,3 +84,11 @@ function sortQuery($sort){
 	}
 	return $result;
 }
+
+// Clear user inputs
+function clear($text){
+	$text = strip_tags($text);
+    $text = trim($text);
+    $text = htmlspecialchars($text);
+    return $text;
+}

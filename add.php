@@ -42,11 +42,11 @@ include("inc/header.php");
 			</div>
 		</form>
 		<hr><h3 class="text-center">OR</h3>
-		<form>
+		<form enctype="multipart/form-data" action="file_handler.php" method="POST">
 			<div class="form-group">
-			    <label for="file" class="col-sm-2 control-label text-right">File input</label>
+			    <label for="file" class="col-sm-2 control-label text-right">Upload XML file</label>
 			    <div class="col-sm-10">
-			    	<input type="file" id="file">
+			    	<input type="file" id="file" name="file">
 			    </div>
 			</div>
 			<div class="form-group">
