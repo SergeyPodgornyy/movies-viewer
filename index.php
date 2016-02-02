@@ -6,8 +6,15 @@ include("inc/functions.php");
 $pageTitle = "";
 include("inc/header.php");
 
-$where = where($_GET['title'],$_GET['actor']);
-$sort = sortQuery($_GET['sort']);
+if(isset($_GET['title'])){
+	$where = where($_GET['title'],null);
+} else if (isset($_GET['actor'])){
+	$where = where(null,$_GET['actor']);
+} else {
+	$where = "";
+}
+
+$sort = isset($_GET['sort']) ? sortQuery($_GET['sort']) : "";
 
 ?>
 
@@ -24,12 +31,15 @@ $sort = sortQuery($_GET['sort']);
 				<select class="form-control" id="select">
 					<option disabled>-- Select search criteria --</option>
 					<option value="title">By title</option>
-					<option value="actor">By actor</option>
+					<option value="actor" <?php echo isset($_GET['actor']) ? "selected" : ""; ?>>By actor</option>
 				</select>
 			</div>
 			<label for="search" class="col-sm-3 control-label text-right">Search criteria</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" id="search" placeholder="Insert search criteria">
+			    <input type="text" class="form-control" id="search" placeholder="Insert search criteria" value="<?php 
+																									    echo isset($_GET['title']) ? $_GET['title'] : "";
+																									    echo isset($_GET['actor']) ? $_GET['actor'] : "";
+																									    ?>">
 			</div>
 		</div>
 	  </div>

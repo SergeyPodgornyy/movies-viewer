@@ -14,6 +14,7 @@ function get_table_rows($db,$where="",$sort=""){
 
 	$select = $db->select($sql);
 
+	$output = "";
 	foreach ($select as $row) {
 		    $output .= "<tr>
 			  	<td>".$row['id']."</td>

@@ -77,7 +77,7 @@ root_folder/
 
 ## Database
 
-The database for this project has two table with the following structure:
+The database for this project has two tables with the following structure:
 
 + `info` table has columns `id`, `title`, `year` (stand for Released year) and `format`.
 
