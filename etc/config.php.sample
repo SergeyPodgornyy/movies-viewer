@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'database'  => [
+        'host'      => 'localhost',
+        'database'  => 'webbylab_movies',
+        'username'  => 'root',
+        'password'  => 'password',
+    ],
+];

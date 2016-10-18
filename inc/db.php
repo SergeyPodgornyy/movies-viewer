@@ -1,12 +1,9 @@
 <?php
 
-include("database.class.php");
+require_once("Database.class.php");
 
+$config = require_once(__DIR__ . '/../etc/config.php');
+$dbConfig = $config['database'];
 
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$database = "webbylab_movies";
-
-$db = database::getInstance();
-$db->connect($servername,$username,$password,$database);
+$db = Database::getInstance();
+$db->connect($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);

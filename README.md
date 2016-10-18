@@ -11,6 +11,8 @@ First of all, you need to start this application on a webserver. As usualy, you 
 
 If you do not want to install **apache** on your computer, php has built-in webserver! With this, you can convert any local folder into a server and host a site locally there. Navigate to root folder using terminal and run 'php -S localhost:8000'. This will make that folder into a local web server. Now access 'http://localhost:8000' from your browser and you will see my app.
 
+> **Note:** `short_open_tag` MUST be turned on in your `php.ini` file.
+
 But something went wrong? Of course! For this app you'll need **mysql**. Before start application, you must make sure you have `mysql-client` and `mysql-server` installed. If not, from terminal, run the following:
 
 ```
@@ -18,9 +20,13 @@ sudo apt-get install mysql-client
 sudo apt-get install mysql-server
 ```
 
-You will be prompted for a root password, which you should enter, with which you will be logging in to phpmyadmin as well. In my application I used **root** as *username*, and **password** as *password*. You should have the same user, or change 7th and 8th rows in `inc/db.php`.
+You will be prompted for a root password, which you should enter, with which you will be logging in to phpmyadmin as well. You need to copy application config with command:
 
-After you installed mysql, you need to import data inside database:
+```
+cp etc/config.php.sample etc/config.php
+```
+
+After you `mysql` will be installed, you need to import data inside database:
 
 ```
 mysql -u root -p webbylab_movies < dump.sql
@@ -34,7 +40,7 @@ After you performed all this things, my application should work by you.:wink:
 
 ## About
 
-On the main page you'll find full list of movies already inserted in database. To remove some item from table, just press `X` button in Options column or select item and press `Delete this movie from list`. 
+On the main page you'll find full list of movies already inserted in database. To remove some item from table, just press `X` button in Options column or select item and press `Delete this movie from list`.
 
 To add new movie, press `Add new Item` on main page. You'll navigate to the page, where you can manually insert data about movie or upload data from the file. Test file you can find in root folder of this project - `data.xml`.
 
@@ -42,14 +48,15 @@ Also, you can search your movies from the list by title or by actor.
 
 ## Structure
 
-+ Inside `css` folder you'll find stylesheets for this project. 
++ Inside `css` folder you'll find stylesheets for this project.
 + In `js` folder locate JavaScript files.
++ Inside `etc` folder placed config sample, that should be copied
 + Images used for this project you can find inside `img` folder.
 + PHP scenarios are inside `inc` folder.
 
-`index.php` is the main page with list of movies. You can find links in main page to `add.php` and `detail.php`. First file used for inserting data to the list, and second for displaying data about recent item. `insert.php` used for insert data to DB from user inputs, and `file_handler.php` used for insert data from XML file uploaded to form. 
+`index.php` is the main page with list of movies. You can find links in main page to `add.php` and `detail.php`. First file used for inserting data to the list, and second for displaying data about recent item. `insert.php` used for insert data to DB from user inputs, and `file_handler.php` used for insert data from XML file uploaded to form.
 
-`database.class.php` has a class called `database` with realization of methods to communicate with database. `db.php` creates an object of class `database` and define connection this database. File `functions.php` has functions to display data and communicate with database throught `database` class.
+`Database.class.php` has a class called `database` with realization of methods to communicate with database. `db.php` creates an object of class `database` and define connection this database. File `functions.php` has functions to display data and communicate with database throught `database` class.
 
 ```
 root_folder/
@@ -58,12 +65,14 @@ root_folder/
 │   └── main.css
 ├── js/
 │   └── script.js
+├── etc/
+│   └── config.php.sample
 ├── img/
 │   ├── 300x300.gif
 │   ├── arrows_sm.jpg
 │   └── 1453586210_17.svg
 ├── inc/
-│   ├── database.class.php
+│   ├── Database.class.php
 │   ├── db.php
 │   ├── functions.php
 │   └── header.php
